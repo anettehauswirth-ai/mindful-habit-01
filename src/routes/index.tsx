@@ -61,7 +61,7 @@ function LogSessionPage() {
         <div className="flex justify-center mb-3">
           <Lotus size={52} glow />
         </div>
-        <h2 className="text-[1.8125rem] font-semibold text-gold mb-1">Today's Session</h2>
+        <h2 className="text-[1.8125rem] font-semibold text-gold mb-1">Welcome. Select session date:</h2>
         <Popover>
           <PopoverTrigger asChild>
             <Button
