@@ -139,18 +139,6 @@ function CalendarPage() {
               </g>
             ))}
 
-            {/* Area + line */}
-            <path d={areaPath} fill="url(#bloomArea)" />
-            <path
-              d={linePath}
-              fill="none"
-              stroke="oklch(0.82 0.12 85)"
-              strokeWidth="1.5"
-              strokeOpacity="0.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
             {/* X labels: every ~5 days */}
             {coords.map((c, i) =>
               i % 5 === 0 || i === coords.length - 1 ? (
