@@ -31,13 +31,7 @@ function LogSessionPage() {
   const [presence, setPresence] = useState([3]);
   const [notes, setNotes] = useState("");
 
-  const today = new Date();
-  const prettyDate = today.toLocaleDateString(undefined, {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+  const [date, setDate] = useState<Date>(new Date());
 
   const handleSave = () => {
     const mins = parseFloat(duration);
@@ -47,7 +41,7 @@ function LogSessionPage() {
     }
     const session: Session = {
       id: crypto.randomUUID(),
-      date: todayISO(),
+      date: todayISO(date),
       createdAt: new Date().toISOString(),
       durationMin: mins,
       presence: presence[0],
@@ -58,6 +52,7 @@ function LogSessionPage() {
     setDuration("");
     setPresence([3]);
     setNotes("");
+    setDate(new Date());
   };
 
   return (
@@ -67,7 +62,29 @@ function LogSessionPage() {
           <Lotus size={52} glow />
         </div>
         <h2 className="text-2xl font-semibold text-gold mb-1">Today's Session</h2>
-        <p className="text-sm text-muted-foreground">{prettyDate}</p>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant="ghost"
+              className={cn(
+                "mt-1 h-auto py-1 px-2 text-sm text-muted-foreground hover:text-foreground hover:bg-background/40 font-normal",
+              )}
+            >
+              <CalendarIcon className="mr-2 h-3.5 w-3.5 opacity-70" />
+              {format(date, "EEEE, MMMM d, yyyy")}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="center">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={(d) => d && setDate(d)}
+              disabled={(d) => d > new Date()}
+              initialFocus
+              className={cn("p-3 pointer-events-auto")}
+            />
+          </PopoverContent>
+        </Popover>
       </div>
 
       <div className="space-y-7">
