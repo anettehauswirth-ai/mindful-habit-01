@@ -18,14 +18,16 @@ function CalendarPage() {
   const { sessions } = useSessions();
 
   const { points, max, totalDays } = useMemo(() => {
-    const totalDays = 30;
+    const pastDays = 30;
+    const futureDays = 2;
+    const totalDays = pastDays + futureDays;
     const totals = new Map<string, number>();
     for (const s of sessions) {
       totals.set(s.date, (totals.get(s.date) ?? 0) + s.durationMin);
     }
     const points: { date: string; minutes: number; label: string }[] = [];
     const today = new Date();
-    for (let i = totalDays - 1; i >= 0; i--) {
+    for (let i = pastDays - 1; i >= -futureDays; i--) {
       const d = new Date(today);
       d.setDate(today.getDate() - i);
       const iso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
