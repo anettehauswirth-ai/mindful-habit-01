@@ -3,7 +3,7 @@ import { Lotus } from "./Lotus";
 
 const tabs = [
   { to: "/", label: "Practice" },
-  { to: "/calendar", label: "Bloom Calendar" },
+  { to: "/calendar", label: "Dashboard" },
   { to: "/history", label: "History" },
 ] as const;
 
