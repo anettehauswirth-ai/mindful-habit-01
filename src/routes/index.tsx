@@ -89,7 +89,7 @@ function LogSessionPage() {
 
       <div className="space-y-7">
         <div className="space-y-2">
-          <Label htmlFor="duration" className="text-[1.1875rem]">
+          <Label htmlFor="duration" className="text-[1.1875rem] block text-center">
             Meditation time
           </Label>
           <div className="relative">
@@ -110,8 +110,8 @@ function LogSessionPage() {
         </div>
 
         <div className="space-y-3">
-          <div className="flex items-baseline justify-between">
-            <Label className="text-[1.1875rem]">How present did you feel?</Label>
+          <div className="text-center">
+            <Label className="text-[1.1875rem] block">How present did you feel?</Label>
             <span className="text-gold text-[1.4375rem] font-medium tabular-nums">
               {presence[0]}<span className="text-muted-foreground text-[1.0625rem]"> / 5</span>
             </span>
@@ -131,7 +131,7 @@ function LogSessionPage() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="notes" className="text-[1.1875rem]">
+          <Label htmlFor="notes" className="text-[1.1875rem] block text-center">
             Reflections
           </Label>
           <Textarea
