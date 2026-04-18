@@ -67,7 +67,7 @@ function LogSessionPage() {
             <Button
               variant="ghost"
               className={cn(
-                "mt-1 h-auto py-1 px-2 text-sm text-muted-foreground hover:text-foreground hover:bg-background/40 font-normal",
+                "mt-1 h-auto py-1 px-2 text-[1.1875rem] text-gold hover:text-gold hover:bg-background/40 font-normal",
               )}
             >
               <CalendarIcon className="mr-2 h-3.5 w-3.5 opacity-70" />
