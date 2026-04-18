@@ -103,7 +103,7 @@ function LogSessionPage() {
               onChange={(e) => setDuration(e.target.value)}
               className="bg-background/40 border-border/60 h-12 pr-20 text-[1.1875rem] text-center"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[1.1875rem] text-muted-foreground">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[1.0625rem] text-muted-foreground">
               minutes
             </span>
           </div>
