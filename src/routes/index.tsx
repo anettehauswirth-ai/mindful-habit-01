@@ -61,16 +61,16 @@ function LogSessionPage() {
         <div className="flex justify-center mb-3">
           <Lotus size={52} glow />
         </div>
-        <h2 className="text-2xl font-semibold text-gold mb-1">Today's Session</h2>
+        <h2 className="text-[1.8125rem] font-semibold text-gold mb-1">Today's Session</h2>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               variant="ghost"
               className={cn(
-                "mt-1 h-auto py-1 px-2 text-[1.1875rem] text-gold hover:text-gold hover:bg-background/40 font-normal",
+                "mt-1 h-auto py-1 px-2 text-[1.5rem] text-gold hover:text-gold hover:bg-background/40 font-normal",
               )}
             >
-              <CalendarIcon className="mr-2 h-3.5 w-3.5 opacity-70" />
+              <CalendarIcon className="mr-2 h-5 w-5 opacity-70" />
               {format(date, "EEEE, MMMM d, yyyy")}
             </Button>
           </PopoverTrigger>
@@ -89,7 +89,7 @@ function LogSessionPage() {
 
       <div className="space-y-7">
         <div className="space-y-2">
-          <Label htmlFor="duration" className="text-sm">
+          <Label htmlFor="duration" className="text-[1.1875rem]">
             Meditation time
           </Label>
           <div className="relative">
@@ -101,9 +101,9 @@ function LogSessionPage() {
               placeholder="20"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="bg-background/40 border-border/60 h-12 pr-20 text-base"
+              className="bg-background/40 border-border/60 h-12 pr-20 text-[1.3125rem]"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[1.1875rem] text-muted-foreground">
               minutes
             </span>
           </div>
@@ -111,9 +111,9 @@ function LogSessionPage() {
 
         <div className="space-y-3">
           <div className="flex items-baseline justify-between">
-            <Label className="text-sm">How present did you feel?</Label>
-            <span className="text-gold text-lg font-medium tabular-nums">
-              {presence[0]}<span className="text-muted-foreground text-xs"> / 5</span>
+            <Label className="text-[1.1875rem]">How present did you feel?</Label>
+            <span className="text-gold text-[1.4375rem] font-medium tabular-nums">
+              {presence[0]}<span className="text-muted-foreground text-[1.0625rem]"> / 5</span>
             </span>
           </div>
           <Slider
@@ -124,14 +124,14 @@ function LogSessionPage() {
             onValueChange={setPresence}
             className="py-2"
           />
-          <div className="flex justify-between text-[10px] uppercase tracking-wider text-muted-foreground/70">
+          <div className="flex justify-between text-[0.9375rem] uppercase tracking-wider text-muted-foreground/70">
             <span>Scattered</span>
             <span>Fully here</span>
           </div>
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="notes" className="text-sm">
+          <Label htmlFor="notes" className="text-[1.1875rem]">
             Reflections
           </Label>
           <Textarea
@@ -140,13 +140,13 @@ function LogSessionPage() {
             placeholder="What arose in the stillness today..."
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="bg-background/40 border-border/60 resize-none leading-relaxed"
+            className="bg-background/40 border-border/60 resize-none leading-relaxed text-[1.3125rem]"
           />
         </div>
 
         <Button
           onClick={handleSave}
-          className="w-full h-12 gradient-gold text-primary-foreground hover:opacity-90 shadow-glow text-base font-medium rounded-xl"
+          className="w-full h-12 gradient-gold text-primary-foreground hover:opacity-90 shadow-glow text-[1.3125rem] font-medium rounded-xl"
         >
           Save Session
         </Button>
