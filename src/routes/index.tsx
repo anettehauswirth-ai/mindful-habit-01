@@ -132,7 +132,7 @@ function LogSessionPage() {
 
         <div className="space-y-2">
           <Label htmlFor="notes" className="text-[1.1875rem] block text-center">
-            Reflections
+            Enter your reflections:
           </Label>
           <Textarea
             id="notes"
