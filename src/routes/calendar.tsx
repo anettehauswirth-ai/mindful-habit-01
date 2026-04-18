@@ -17,7 +17,7 @@ export const Route = createFileRoute("/calendar")({
 type Point = { date: string; minutes: number; presence: number | null; label: string };
 
 function CalendarPage() {
-  const { sessions } = useSessions();
+  const { sessions, isLoading } = useSessions();
 
   const { points, totalDays } = useMemo(() => {
     const pastDays = 30;
@@ -53,6 +53,19 @@ function CalendarPage() {
 
   const minutesMax = Math.max(1, ...points.map((p) => p.minutes)) + 6;
   const peakMinutes = Math.max(0, ...points.map((p) => p.minutes));
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center animate-bloom">
+        <div className="text-center">
+          <div className="flex justify-center mb-4 animate-pulse">
+            <Lotus size={56} glow />
+          </div>
+          <p className="text-sm text-muted-foreground">Gathering your practice…</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8 animate-bloom">

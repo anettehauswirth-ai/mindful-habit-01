@@ -28,7 +28,7 @@ function formatDate(iso: string) {
 }
 
 function HistoryPage() {
-  const { sessions } = useSessions();
+  const { sessions, isLoading } = useSessions();
   const recent = [...sessions]
     .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
     .slice(0, 10);
@@ -42,7 +42,14 @@ function HistoryPage() {
         </p>
       </div>
 
-      {recent.length === 0 ? (
+      {isLoading ? (
+        <div className="glass rounded-3xl p-12 text-center shadow-soft">
+          <div className="flex justify-center mb-4 animate-pulse">
+            <Lotus size={48} glow />
+          </div>
+          <p className="text-sm text-muted-foreground">Gathering your practice…</p>
+        </div>
+      ) : recent.length === 0 ? (
         <div className="glass rounded-3xl p-12 text-center shadow-soft">
           <div className="flex justify-center mb-4 opacity-60">
             <Lotus size={64} />

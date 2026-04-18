@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useSessions } from "@/hooks/use-sessions";
-import { todayISO, type Session } from "@/lib/sessions";
+import { todayISO } from "@/lib/sessions";
 import { Lotus } from "@/components/Lotus";
 
 export const Route = createFileRoute("/")({
@@ -26,33 +26,35 @@ export const Route = createFileRoute("/")({
 });
 
 function LogSessionPage() {
-  const { add } = useSessions();
+  const { add, isAdding } = useSessions();
   const [duration, setDuration] = useState("");
   const [presence, setPresence] = useState([3]);
   const [notes, setNotes] = useState("");
 
   const [date, setDate] = useState<Date>(new Date());
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const mins = parseFloat(duration);
     if (!mins || mins <= 0) {
       toast.error("Please enter a valid meditation time.");
       return;
     }
-    const session: Session = {
-      id: crypto.randomUUID(),
-      date: todayISO(date),
-      createdAt: new Date().toISOString(),
-      durationMin: mins,
-      presence: presence[0],
-      notes: notes.trim(),
-    };
-    add(session);
-    toast.success("Session saved. A lotus blooms today. 🪷");
-    setDuration("");
-    setPresence([3]);
-    setNotes("");
-    setDate(new Date());
+    try {
+      await add({
+        date: todayISO(date),
+        durationMin: mins,
+        presence: presence[0],
+        notes: notes.trim(),
+      });
+      toast.success("Session saved. A lotus blooms today. 🪷");
+      setDuration("");
+      setPresence([3]);
+      setNotes("");
+      setDate(new Date());
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Could not save session.";
+      toast.error(msg);
+    }
   };
 
   return (
@@ -146,9 +148,10 @@ function LogSessionPage() {
 
         <Button
           onClick={handleSave}
-          className="w-full h-12 gradient-gold text-primary-foreground hover:opacity-90 shadow-glow text-[1.3125rem] font-medium rounded-xl"
+          disabled={isAdding}
+          className="w-full h-12 gradient-gold text-primary-foreground hover:opacity-90 shadow-glow text-[1.3125rem] font-medium rounded-xl disabled:opacity-70"
         >
-          Save Session
+          {isAdding ? "Saving…" : "Save Session"}
         </Button>
       </div>
     </section>

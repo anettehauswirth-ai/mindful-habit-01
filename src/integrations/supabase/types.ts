@@ -14,7 +14,50 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      // NOTE: Hand-declared until `supabase gen types typescript` is run
+      // against the project. Keep in sync with
+      // supabase/migrations/20260418170000_create_sessions_table.sql.
+      sessions: {
+        Row: {
+          id: string
+          user_id: string
+          date: string
+          duration_min: number
+          presence: number
+          notes: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          date: string
+          duration_min: number
+          presence: number
+          notes?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          date?: string
+          duration_min?: number
+          presence?: number
+          notes?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sessions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
