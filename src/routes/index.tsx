@@ -92,7 +92,7 @@ function LogSessionPage() {
           <Label htmlFor="duration" className="text-[1.1875rem] block text-center">
             Meditation time
           </Label>
-          <div className="relative">
+          <div className="relative mx-auto w-[14rem]">
             <Input
               id="duration"
               type="number"
@@ -101,7 +101,7 @@ function LogSessionPage() {
               placeholder="20"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="bg-background/40 border-border/60 h-12 pr-20 text-[1.3125rem]"
+              className="bg-background/40 border-border/60 h-12 pr-20 text-[1.3125rem] text-center"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[1.1875rem] text-muted-foreground">
               minutes
