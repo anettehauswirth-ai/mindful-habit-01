@@ -37,7 +37,7 @@ function CalendarPage() {
         label: d.toLocaleDateString(undefined, { month: "short", day: "numeric" }),
       });
     }
-    const max = Math.max(1, ...points.map((p) => p.minutes)) + 2;
+    const max = Math.max(1, ...points.map((p) => p.minutes)) + 6;
     return { points, max, totalDays };
   }, [sessions]);
 
