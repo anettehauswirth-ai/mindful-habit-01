@@ -106,7 +106,7 @@ export function AppShell() {
           </main>
 
           <footer className="mt-16 text-center text-xs text-muted-foreground/70">
-            Breathe in. Breathe out.
+            Peace is only one breath away
           </footer>
         </div>
       )}
