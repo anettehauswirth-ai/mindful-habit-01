@@ -37,6 +37,7 @@ export function AppShell() {
             <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gold">
               Stillness
             </h1>
+            <Lotus size={44} glow />
           </div>
           <p className="text-sm text-muted-foreground italic">
             A quiet space for your daily practice
