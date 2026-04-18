@@ -90,7 +90,7 @@ function LogSessionPage() {
       <div className="space-y-7">
         <div className="space-y-2">
           <Label htmlFor="duration" className="text-[1.1875rem] block text-center">
-            Meditation time
+            Enter meditation time:
           </Label>
           <div className="relative mx-auto w-[14rem]">
             <Input
