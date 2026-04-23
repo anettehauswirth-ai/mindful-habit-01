@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      focus_images: {
+        Row: {
+          created_at: string
+          id: string
+          storage_path: string | null
+          tag: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          storage_path?: string | null
+          tag: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          storage_path?: string | null
+          tag?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      mantras: {
+        Row: {
+          created_at: string
+          id: string
+          rating: number | null
+          text: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          rating?: number | null
+          text: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          rating?: number | null
+          text?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sessions: {
+        Row: {
+          created_at: string
+          date: string
+          duration_min: number
+          id: string
+          notes: string
+          presence: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          duration_min: number
+          id?: string
+          notes?: string
+          presence: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          duration_min?: number
+          id?: string
+          notes?: string
+          presence?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

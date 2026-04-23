@@ -46,7 +46,7 @@ export function rowToFocusImage(row: Tables<"focus_images">): FocusImage {
     id: row.id,
     url: row.url,
     storagePath: row.storage_path,
-    tag: row.tag,
+    tag: row.tag as FocusTag,
     createdAt: row.created_at,
   };
 }
