@@ -9,6 +9,8 @@ const tabs = [
   { to: "/", label: "Practice" },
   { to: "/calendar", label: "Dashboard" },
   { to: "/history", label: "History" },
+  { to: "/mantras", label: "Mantras" },
+  { to: "/focus-images", label: "Focus Image" },
 ] as const;
 
 export function AppShell() {

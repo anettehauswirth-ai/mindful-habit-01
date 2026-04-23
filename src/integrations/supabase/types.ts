@@ -58,6 +58,82 @@ export type Database = {
           }
         ]
       }
+      // NOTE: Hand-declared until `supabase gen types typescript` is run
+      // against the project. Keep in sync with
+      // supabase/migrations/20260420000000_create_focus_images_table.sql.
+      focus_images: {
+        Row: {
+          id: string
+          user_id: string
+          url: string
+          storage_path: string | null
+          tag: "nature" | "mandalas" | "candles" | "spirals" | "other"
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          url: string
+          storage_path?: string | null
+          tag: "nature" | "mandalas" | "candles" | "spirals" | "other"
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          url?: string
+          storage_path?: string | null
+          tag?: "nature" | "mandalas" | "candles" | "spirals" | "other"
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "focus_images_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      // NOTE: Hand-declared until `supabase gen types typescript` is run
+      // against the project. Keep in sync with
+      // supabase/migrations/20260419000000_create_mantras_table.sql.
+      mantras: {
+        Row: {
+          id: string
+          user_id: string
+          text: string
+          rating: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          text: string
+          rating?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          text?: string
+          rating?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mantras_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never

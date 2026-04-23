@@ -9,14 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MantrasRouteImport } from './routes/mantras'
 import { Route as HistoryRouteImport } from './routes/history'
+import { Route as FocusImagesRouteImport } from './routes/focus-images'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 
+const MantrasRoute = MantrasRouteImport.update({
+  id: '/mantras',
+  path: '/mantras',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HistoryRoute = HistoryRouteImport.update({
   id: '/history',
   path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FocusImagesRoute = FocusImagesRouteImport.update({
+  id: '/focus-images',
+  path: '/focus-images',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
@@ -39,43 +51,78 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
+  '/focus-images': typeof FocusImagesRoute
   '/history': typeof HistoryRoute
+  '/mantras': typeof MantrasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
+  '/focus-images': typeof FocusImagesRoute
   '/history': typeof HistoryRoute
+  '/mantras': typeof MantrasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
+  '/focus-images': typeof FocusImagesRoute
   '/history': typeof HistoryRoute
+  '/mantras': typeof MantrasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/calendar' | '/history'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/calendar'
+    | '/focus-images'
+    | '/history'
+    | '/mantras'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/calendar' | '/history'
-  id: '__root__' | '/' | '/auth' | '/calendar' | '/history'
+  to: '/' | '/auth' | '/calendar' | '/focus-images' | '/history' | '/mantras'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/calendar'
+    | '/focus-images'
+    | '/history'
+    | '/mantras'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   CalendarRoute: typeof CalendarRoute
+  FocusImagesRoute: typeof FocusImagesRoute
   HistoryRoute: typeof HistoryRoute
+  MantrasRoute: typeof MantrasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/mantras': {
+      id: '/mantras'
+      path: '/mantras'
+      fullPath: '/mantras'
+      preLoaderRoute: typeof MantrasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/history': {
       id: '/history'
       path: '/history'
       fullPath: '/history'
       preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/focus-images': {
+      id: '/focus-images'
+      path: '/focus-images'
+      fullPath: '/focus-images'
+      preLoaderRoute: typeof FocusImagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -106,7 +153,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   CalendarRoute: CalendarRoute,
+  FocusImagesRoute: FocusImagesRoute,
   HistoryRoute: HistoryRoute,
+  MantrasRoute: MantrasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

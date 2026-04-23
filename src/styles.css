@@ -166,6 +166,7 @@
 
 @layer utilities {
   .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
   .bg-velvet { background-color: var(--velvet); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-soft { box-shadow: var(--shadow-soft); }

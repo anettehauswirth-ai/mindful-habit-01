@@ -21,7 +21,10 @@ function CalendarPage() {
 
   const { points, totalDays } = useMemo(() => {
     const pastDays = 30;
-    const futureDays = 2;
+    // Charts show history only — we intentionally don't extend past today so
+    // we don't render zero-minute "data points" or empty dots for days that
+    // haven't happened yet.
+    const futureDays = 0;
     const totalDays = pastDays + futureDays;
     const minutesByDay = new Map<string, number>();
     const presenceSum = new Map<string, number>();
@@ -92,7 +95,10 @@ function CalendarPage() {
         subtitle={`Minutes meditated · peak ${peakMinutes}m`}
         points={points}
         today={today}
-        getValue={(p) => p.minutes}
+        // 0 minutes = no session that day; surface it as "no data" so the
+        // chart renders the muted placeholder dot instead of a lotus pinned
+        // to the baseline (matches the focus chart's behavior).
+        getValue={(p) => (p.minutes > 0 ? p.minutes : null)}
         max={minutesMax}
         formatTick={(v) => String(v)}
         ariaLabel="Minutes meditated over the last 30 days"
